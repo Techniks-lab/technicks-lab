@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const products = [
   { src: "/products/product-1.jpeg", alt: "Technicks One" },
-  { src: "/products/product-2.jpeg", alt: "Technicks Pro" },
+  { src: "/products/product-3.jpeg", alt: "Technicks Pro" },
 ];
 
 export default function Home() {
