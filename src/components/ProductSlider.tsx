@@ -19,7 +19,7 @@ export const ProductSlider = () => {
   };
 
   return (
-    <section className="border-t border-border bg-surface py-24 pt-32">
+    <section id="products" className="border-t border-border bg-surface py-24 pt-32">
       <div className="mx-auto max-w-6xl px-6">
         <div className="mb-10 flex items-end justify-between">
           <div>
