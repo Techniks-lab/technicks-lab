@@ -31,45 +31,31 @@ interface Slide {
   mobileImage?: string;
   title: string;
   subtitle: string;
+  learn_more?: boolean;
   cta: string;
   ctaHref: string;
+  desc?: string;
 }
 
 const slides: Slide[] = [
   {
-    image:
-      "/hero/device_image1.png",
+    image: "/hero/device_image1.png",
     title: "Smart MPP",
     subtitle: "Retro-inspired handheld. Modern power.",
-    mobileImage:"/products/product-3.jpeg",
+    mobileImage: "/products/product-3.jpeg",
     cta: "Shop Now",
+    learn_more: true,
     ctaHref: "#buy",
   },
   {
-     image:
-      "/hero/product-al.png",
+    image: "/hero/product-al.png",
     mobileImage: "/hero/product-1-mobile.png",
     title: "ALTAR",
     subtitle: '5" IPS display. Analog sticks. Premium build.',
     cta: "Shop Now",
+    learn_more: true,
     ctaHref: "#buy",
   },
-  // {
-  //    image:
-  //     "/products/product-3.jpeg",
-  //   title: "Harmonics",
-  //   subtitle: '5" IPS display. Analog sticks. Premium build.',
-  //   cta: "Shop Now",
-  //   ctaHref: "#buy",
-  // },
-  // {
-  //    image:
-  //     "/products/product-4.jpeg",
-  //   title: "Technicks Pro",
-  //   subtitle: '5" IPS display. Analog sticks. Premium build.',
-  //   cta: "Shop Now",
-  //   ctaHref: "#buy",
-  // },
 ];
 
 export const HeroCarousel = () => {
