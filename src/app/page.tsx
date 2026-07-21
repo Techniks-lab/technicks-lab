@@ -1,28 +1,14 @@
 import { Header } from "@/components/Header";
 import { HeroCarousel } from "@/components/HeroCarousel";
 import { ProductSlider } from "@/components/ProductSlider";
-import Image from "next/image";
-import Link from "next/link";
-
-const products = [
-  {
-    src: "/products/product-1.jpeg",
-    alt: "SentryTriguard",
-    slug: "sentrytriguard",
-  },
-  {
-    src: "/products/product-3.jpeg",
-    alt: "PowerGuard",
-    slug: "powerguard",
-  },
-];
 
 export default function Home() {
   return (
     <>
       <Header />
-      <HeroCarousel />
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
+      <main>
+        <HeroCarousel />
+      {/* <section className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
         {products.map((p) => (
           <Link
             key={p.slug}
@@ -44,12 +30,12 @@ export default function Home() {
             </div>
           </Link>
         ))}
-      </section>
+      </section> */}
 
       <section className="border-t border-border bg-surface py-24 md:py-32">
         <div className="mx-auto max-w-4xl px-6 text-center">
           <p className="mb-4 text-sm font-medium uppercase tracking-widest text-primary">
-            Our Mission
+            IT & Engineering
           </p>
           <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl">
             Building systems that power
@@ -79,6 +65,7 @@ export default function Home() {
       </section>
 
       <ProductSlider />
+      </main>
 
       <footer className="border-t border-border bg-background py-12">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">

@@ -29,8 +29,40 @@ export function ProductPage({ product }: { product: Product }) {
     });
   };
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    brand: {
+      "@type": "Brand",
+      name: "TechnicksLab",
+    },
+    image: product.image,
+    url: `https://technickslab.com/products/${product.slug}`,
+    offers: {
+      "@type": "Offer",
+      availability: "https://schema.org/PreOrder",
+      priceCurrency: "USD",
+      priceValidUntil: "2026-12-31",
+    },
+    category: "IT Infrastructure",
+    additionalProperty: [
+      {
+        "@type": "PropertyValue",
+        name: "Hook",
+        value: product.hook,
+      },
+    ],
+  };
+
   return (
     <main className="min-h-screen bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+
       {/* Nav */}
       <nav className="sticky top-0 z-50 border-b border-gray-200/60 bg-white/80 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">

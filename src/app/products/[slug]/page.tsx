@@ -3,6 +3,8 @@ import { ProductPage } from "./ProductPage";
 import Link from "next/link";
 import type { Metadata } from "next";
 
+const baseUrl = "https://technickslab.com";
+
 export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
@@ -15,9 +17,47 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return { title: "Product Not Found" };
+
+  const productUrl = `${baseUrl}/products/${product.slug}`;
+
   return {
-    title: `${product.name} | TechnicksLab`,
-    description: product.hook,
+    title: product.name,
+    description: `${product.tagline}. ${product.hook}`,
+    keywords: [
+      product.name,
+      "TechnicksLab",
+      "Harmonicks",
+      "IT infrastructure",
+      "environmental monitoring",
+      "power protection",
+      "solar energy",
+      "autonomous surveying",
+    ],
+    alternates: {
+      canonical: `/products/${product.slug}`,
+    },
+    openGraph: {
+      type: "website",
+      locale: "en_US",
+      url: productUrl,
+      siteName: "TechnicksLab",
+      title: `${product.name} | TechnicksLab`,
+      description: `${product.tagline}. ${product.hook}`,
+      images: [
+        {
+          url: product.image,
+          width: 1200,
+          height: 630,
+          alt: product.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} | TechnicksLab`,
+      description: `${product.tagline}. ${product.hook}`,
+      images: [product.image],
+    },
   };
 }
 
