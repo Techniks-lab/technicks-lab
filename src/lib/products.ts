@@ -15,7 +15,7 @@ export const products: Product[] = [
     slug: "sentrytriguard",
     name: "SentryTriguard",
     tagline: "The Ultimate Three-in-One Environmental Shield",
-    icon: "🔒",
+    icon: "",
     image: "/products/product-1.jpeg",
     badge: "Core Product",
     hook: "Complete vigilance, zero compromise.",
@@ -28,7 +28,7 @@ export const products: Product[] = [
     slug: "powerguard",
     name: "PowerGuard",
     tagline: "Intelligent Protection for Your Critical Loads",
-    icon: "⚡",
+    icon: "",
     image: "/products/product-3.jpeg",
     badge: "Essential",
     hook: "Total command over your power safety.",
@@ -41,7 +41,7 @@ export const products: Product[] = [
     slug: "synenergy",
     name: "SynEnergy",
     tagline: "Synchronized Power. Maximum Efficiency.",
-    icon: "☀️",
+    icon: "",
     image: "/products/product-4.jpeg",
     badge: "Green Tech",
     hook: "Never waste a single watt of sunlight.",
@@ -54,7 +54,7 @@ export const products: Product[] = [
     slug: "altar",
     name: "ALTAR",
     tagline: "Autonomous Intelligence. Uncompromising Precision.",
-    icon: "🤖",
+    icon: "",
     image: "/hero/product-al.png",
     badge: "Industrial",
     hook: "Rugged mobility meets intelligent site surveying.",
@@ -67,4 +67,4 @@ export const products: Product[] = [
 
 export function getProductBySlug(slug: string): Product | undefined {
   return products.find((p) => p.slug === slug);
-}
+} 
