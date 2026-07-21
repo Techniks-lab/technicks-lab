@@ -28,6 +28,7 @@ const navLinks: NavLink[] = [
 
 interface Slide {
   image: string;
+  mobileImage?: string;
   title: string;
   subtitle: string;
   cta: string;
@@ -35,17 +36,19 @@ interface Slide {
 }
 
 const slides: Slide[] = [
-  // {
-  //   image:
-  //     "/products/product-1.jpeg",
-  //   title: "Smart MPP",
-  //   subtitle: "Retro-inspired handheld. Modern power.",
-  //   cta: "Shop Now",
-  //   ctaHref: "#buy",
-  // },
+  {
+    image:
+      "/hero/device_image1.png",
+    title: "Smart MPP",
+    subtitle: "Retro-inspired handheld. Modern power.",
+    mobileImage:"/products/product-3.jpeg",
+    cta: "Shop Now",
+    ctaHref: "#buy",
+  },
   {
      image:
       "/hero/product-al.png",
+    mobileImage: "/hero/product-1-mobile.png",
     title: "ALTAR",
     subtitle: '5" IPS display. Analog sticks. Premium build.',
     cta: "Shop Now",
@@ -87,10 +90,10 @@ export const HeroCarousel = () => {
   }, [next]);
 
   return (
-    <section className="group/carousel relative h-screen min-h-[600px] overflow-hidden">
+    <section className="group/carousel relative pt-16 md:pt-0 md:h-screen min-h-[600px] overflow-hidden">
       {/* ─── NAV ─── */}
       {/* from-background/70 via-background/60 to-transparent */}
-      <nav className="absolute top-0 left-0 right-0 z-20">
+      <nav className="hidden md:block absolute top-0 left-0 right-0 z-20">
         <div className="absolute inset-0 bg-gradient-to-b " />
         <div className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <Link
@@ -174,26 +177,46 @@ export const HeroCarousel = () => {
       </nav>
 
       {/* ─── SLIDES ─── */}
-      {slides.map((slide, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 z-0 transition-opacity duration-700 ${
-            i === current ? "opacity-100" : "pointer-events-none opacity-0"
-          }`}
-        >
-          <Image
-            src={slide.image}
-            alt={slide.title}
-            fill
-            priority={i === 0}
-            className="md:object-cover object-center"
-          />
-        </div>
-      ))}
+      <div className="md:absolute md:inset-0 md:z-0 relative w-full h-[50vh] md:h-auto">
+        {slides.map((slide, i) => (
+          <div
+            key={i}
+            className={`md:absolute md:inset-0 w-full h-full transition-opacity duration-700 ${
+              i === current ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          >
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              priority={i === 0}
+              className="object-cover hidden md:block"
+            />
+            {slide.mobileImage && (
+              <Image
+                src={slide.mobileImage}
+                alt={slide.title}
+                fill
+                priority={i === 0}
+                className="object-cover md:hidden"
+              />
+            )}
+            {!slide.mobileImage && (
+              <Image
+                src={slide.image}
+                alt={slide.title}
+                fill
+                priority={i === 0}
+                className="object-contain md:hidden"
+              />
+            )}
+          </div>
+        ))}
+      </div>
 
       {/* ─── GRADIENT OVERLAY ─── */}
       <div
-        className="absolute inset-0 z-5 opacity-20"
+        className="absolute inset-0 z-5 opacity-20 hidden md:block"
         style={{
           background:
             "radial-gradient(circle at 65% 35%, #666 0%, #444 35%, #232323 100%)",
@@ -201,16 +224,16 @@ export const HeroCarousel = () => {
       />
 
       {/* ─── TEXT ─── */}
-      <div className="relative z-10 flex h-full flex-col justify-end pb-28">
-        <div className="absolute inset-x-0 bottom-0 h-52  to-transparent" />
-        <div className="relative mx-auto w-full max-w-6xl px-6">
-          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-gray-300">
+      <div className="relative z-10 md:flex md:h-full md:flex-col md:justify-end pb-8 md:pb-28">
+        <div className="absolute inset-x-0 bottom-0 h-52 to-transparent hidden md:block" />
+        <div className="relative mx-auto w-full max-w-6xl px-6 py-8 md:py-0 md:bg-transparent bg-[#707477]/10">
+          <p className="mb-3 text-sm font-medium uppercase tracking-widest text-gray-900 md:text-gray-300">
             Handhelds &amp; Accessories
           </p>
-          <h1 className="text-5xl leading-[1.1] font-bold tracking-tight text-foreground md:text-7xl">
+          <h1 className="text-4xl leading-[1.1] font-bold tracking-tight text-gray-900 md:text-7xl md:text-white">
             {slides[current].title}
           </h1>
-          <p className="mt-4 max-w-lg text-lg leading-relaxed text-muted">
+          <p className="mt-4 max-w-lg text-lg leading-relaxed text-gray-500 md:text-gray-300">
             {slides[current].subtitle}
           </p>
           <a

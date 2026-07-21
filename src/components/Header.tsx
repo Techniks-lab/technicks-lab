@@ -30,10 +30,8 @@ export const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? "translate-y-0 border-gray-300/50 bg-[#e8e8e8] shadow-sm"
-          : "-translate-y-full border-transparent bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-50 border-b border-gray-300/50 bg-[#ffff] shadow-sm transition-all duration-300 ${
+        scrolled ? "md:translate-y-0" : "md:-translate-y-full md:border-transparent md:bg-transparent md:shadow-none"
       }`}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">

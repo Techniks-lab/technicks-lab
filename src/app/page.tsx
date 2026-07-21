@@ -5,17 +5,17 @@ import Image from "next/image";
 const products = [
   { src: "/products/product-1.jpeg", alt: "Technicks One" },
   { src: "/products/product-3.jpeg", alt: "Technicks Pro" },
-];
+];  
 
 export default function Home() {
   return (
     <>
       <Header />
       <HeroCarousel />
-      <section className="grid grid-cols-1 md:grid-cols-2 space-x-4 mx-3 my-3">
+      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4">
         {products.map((p) => (
-          <div key={p.alt} className="relative aspect-square">
-            <Image src={p.src} alt={p.alt} fill className="object-center" />
+          <div key={p.alt} className="relative h-96 md:h-[500px]">
+            <Image src={p.src} alt={p.alt} fill className="object-cover" />
           </div>
         ))}
       </section>
