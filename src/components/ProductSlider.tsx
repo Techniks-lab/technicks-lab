@@ -50,8 +50,8 @@ export const ProductSlider = () => {
 
         <div
           ref={scrollRef}
-          className="-mx-2 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 scrollbar-none"
-          style={{ scrollbarWidth: "none" }}
+          className="-mx-6 flex select-none snap-x snap-mandatory gap-4 overflow-x-auto scroll-smooth pb-4 pl-6 pr-6 scrollbar-none"
+          style={{ scrollbarWidth: "none", scrollPaddingLeft: "1.5rem" }}
         >
           {products.map((product) => (
             <div

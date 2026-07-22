@@ -16,7 +16,7 @@ export const products: Product[] = [
     name: "SentryTriguard",
     tagline: "The Ultimate Three-in-One Environmental Shield",
     icon: "",
-    image: "/products/product-1.jpeg",
+    image: "/products/SentryTriguard.jpeg",
     badge: "Core Product",
     hook: "Complete vigilance, zero compromise.",
     description:
@@ -29,7 +29,7 @@ export const products: Product[] = [
     name: "PowerGuard",
     tagline: "Intelligent Protection for Your Critical Loads",
     icon: "",
-    image: "/products/product-3.jpeg",
+    image: "/products/power-guard.jpeg",
     badge: "Essential",
     hook: "Total command over your power safety.",
     description:
@@ -42,7 +42,7 @@ export const products: Product[] = [
     name: "SynEnergy",
     tagline: "Synchronized Power. Maximum Efficiency.",
     icon: "",
-    image: "/products/product-4.jpeg",
+    image: "/products/synEnergy.jpeg",
     badge: "Green Tech",
     hook: "Never waste a single watt of sunlight.",
     description:
