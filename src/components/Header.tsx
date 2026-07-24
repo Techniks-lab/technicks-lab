@@ -12,21 +12,21 @@ interface NavLink {
 const links: NavLink[] = [
   { label: "Home", href: "#" },
   { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
   { label: "Where to Buy", href: "#buy" },
   { label: "Handheld", href: "#handheld" },
 ];
 
-export const Header = () => {
+export const Header = ({ forceVisible = false }: { forceVisible?: boolean } = {}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(forceVisible);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
+    const onScroll = () => setScrolled(forceVisible || window.scrollY > 50);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [forceVisible]);
 
   return (
     <header
