@@ -8,6 +8,7 @@ import { useState, useTransition } from "react";
 
 export function ProductPage({ product }: { product: Product }) {
   const [email, setEmail] = useState("");
+
   const [submitted, setSubmitted] = useState(false);
   const [isPending, startTransition] = useTransition();
 
@@ -15,16 +16,14 @@ export function ProductPage({ product }: { product: Product }) {
     e.preventDefault();
     if (!email) return;
     startTransition(async () => {
-      // Store notification signup locally for now
-      const signups = JSON.parse(
-        localStorage.getItem("harmonicks-signups") || "[]"
-      );
-      signups.push({
-        email,
-        product: product.slug,
-        timestamp: new Date().toISOString(),
+      await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          product: product.name,
+        }),
       });
-      localStorage.setItem("harmonicks-signups", JSON.stringify(signups));
       setSubmitted(true);
     });
   };
@@ -164,26 +163,28 @@ export function ProductPage({ product }: { product: Product }) {
           ) : (
             <form
               onSubmit={handleSubmit}
-              className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center"
+              className="mt-8 flex flex-col items-center gap-3"
             >
-              <div className="relative w-full max-w-sm">
-                <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
-                <input
-                  type="email"
-                  required
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-full border border-gray-300 bg-white py-3 pl-10 pr-4 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                />
+              <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                <div className="relative w-full max-w-sm">
+                  <Mail className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="email"
+                    required
+                    placeholder="Enter your email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full rounded-full border border-gray-300 bg-white py-3 pl-10 pr-4 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  disabled={isPending}
+                  className="w-full rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-light disabled:opacity-50 sm:w-auto"
+                >
+                  {isPending ? "Signing up..." : "Notify Me"}
+                </button>
               </div>
-              <button
-                type="submit"
-                disabled={isPending}
-                className="w-full rounded-full bg-primary px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-primary-light disabled:opacity-50 sm:w-auto"
-              >
-                {isPending ? "Signing up..." : "Notify Me"}
-              </button>
             </form>
           )}
 
