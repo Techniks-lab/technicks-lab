@@ -10,11 +10,11 @@ interface NavLink {
 }
 
 const links: NavLink[] = [
-  { label: "Home", href: "#" },
-  { label: "About", href: "#about" },
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
-  { label: "Where to Buy", href: "#buy" },
-  { label: "Handheld", href: "#handheld" },
+  { label: "Where to Buy", href: "/contact" },
+  { label: "Handheld", href: "/contact" },
 ];
 
 export const Header = ({ forceVisible = false }: { forceVisible?: boolean } = {}) => {
