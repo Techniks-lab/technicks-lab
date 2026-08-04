@@ -23,7 +23,7 @@ const navLinks: NavLink[] = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Where to Buy", href: "/contact" },
-  { label: "Handheld", href: "/contact" },
+  // { label: "Handheld", href: "/contact" },
 ];
 
 interface Slide {
